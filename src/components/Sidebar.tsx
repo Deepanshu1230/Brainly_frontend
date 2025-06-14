@@ -21,14 +21,27 @@ export function Sidebar({setSelecttype}:SidebarProps){
 
    async function logout(){
 
+    const token=localStorage.getItem("token");
+    
+    try{
+
+        localStorage.removeItem("token")
        await axios.post(`${BACKEND_URL}/api/v1/logout`,{
             headers:{
-                       "Authorization":localStorage.getItem("token") 
+                       "Authorization":`${token}` 
             
             }
         })
         toast.success("Logout");
         navigate("/login");
+    
+
+    }
+    catch(err){
+        toast.error("Logout failed");
+    
+
+    }
     
 
 

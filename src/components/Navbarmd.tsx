@@ -5,10 +5,43 @@ import { useEffect, useState } from "react";
 import cartoon from "../images/87729996d6a03f5285b9048aaa674ea2.webp";
 import {Footer} from "./Footer";
 import { Usecontent } from "../hooks/UseContent";
+import axios from "axios";
+import { BACKEND_URL } from "../config/config";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar(){
+  const navigate=useNavigate();
       const [openmodal,setopenmodal]=useState(false);
-      const {contents,setcontent,refresh}=Usecontent();
+      const {contents,refresh}=Usecontent();
+
+       async function logout(){
+
+    const token=localStorage.getItem("token");
+    
+    try{
+
+        localStorage.removeItem("token")
+       await axios.post(`${BACKEND_URL}/api/v1/logout`,{
+            headers:{
+                       "Authorization":`${token}` 
+            
+            }
+        })
+        toast.success("Logout");
+        navigate("/login");
+    
+
+    }
+    catch(err){
+        toast.error("Logout failed");
+    
+
+    }
+    
+
+
+    }
 
 
       useEffect(()=>{
@@ -54,7 +87,7 @@ export function Navbar(){
         <li ><a className="justify-between">Share
           <span className="bg-green-400 text-white text-[10px] rounded-xl px-1 py-1">New</span>
           </a> </li>
-        <li><a>Logout</a></li>
+        <li><button onClick={logout}>Logout</button></li>
       </ul>
     </div>
     
