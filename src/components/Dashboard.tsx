@@ -7,6 +7,8 @@ import { Shareicon } from "../icons/Share";
 import { Plusicon } from "../icons/Plus";
 import { Navbar } from "./Navbarmd";
 import { Usecontent } from "../hooks/UseContent";
+import axios from "axios";
+import { BACKEND_URL } from "../config/config";
 
 
 
@@ -15,6 +17,26 @@ export function Dashboard(){
    const {contents,refresh} = Usecontent();
     const [openmodal,setopenmodal]=useState(false);
     const [selectType,setSelecttype]=useState<"twitter"|"youtube"|null>(null);
+
+    async function Sharecontent(){
+
+      const response=await axios.post(`${BACKEND_URL}/api/v1/brain/share`,{
+         share:true
+      },{
+        headers:{
+          "Authorization":localStorage.getItem("token")
+        } 
+
+
+        
+      })
+
+      const shareUrl=`http://localhost:5173/api/v1/brain/${response.data.hash}`;
+      navigator.clipboard.writeText(shareUrl);
+      alert(shareUrl);
+
+
+    }
 
 
       const filtercontents=selectType
@@ -56,6 +78,7 @@ export function Dashboard(){
         <Button
           varient="primary"
           text="Share"
+          onclick={Sharecontent}
           startIcon={<Shareicon />}
         />
         <Button

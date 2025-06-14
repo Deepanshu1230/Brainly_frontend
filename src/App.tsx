@@ -6,6 +6,8 @@ import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 
 import { Dashboard } from "./components/Dashboard";
+import { Privateroute } from "./components/libs/Privateroute";
+import { Sharecontent } from "./components/Sharecontent";
 
 
 
@@ -15,7 +17,12 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/dashboard" index element={<Dashboard/>}/>
+
+          <Route path="/dashboard" index element={
+            <Privateroute>
+             <Dashboard/>
+            </Privateroute>}/>
+            <Route path="/api/v1/brain/:sharelink" element={<Sharecontent/>}/>
           
         </Routes>
         </BrowserRouter>

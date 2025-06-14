@@ -1,7 +1,7 @@
 import { Input } from "./Input";
 import cartoon from "../images/login_cartton-removebg-preview.png";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../config/config";
 import toast, { Toaster } from 'react-hot-toast';
@@ -10,7 +10,7 @@ export function Login(){
     const userRef=useRef<HTMLInputElement>(null);
     const Password=useRef<HTMLInputElement>(null);
     
-    const [loader,setloader]=useState(false);
+    
 
     async function login(){
 
