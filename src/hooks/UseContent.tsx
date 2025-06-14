@@ -22,13 +22,13 @@ export function Usecontent(){
     
         
 
-            const token=localStorage.getItem("token");
+            // const token=localStorage.getItem("token");
             // console.log("TOken is valid: "+token);
 
-         if(token){
-            console.warn("Token is invalid");
+         // if(token){
+         //    console.warn("Token is invalid");
             
-         }
+         // }
 
           axios.get(`${BACKEND_URL}`+"/api/v1/content",{
             headers:{

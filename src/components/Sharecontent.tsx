@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BACKEND_URL } from "../config/config";
 import image from "../images/login_imag_2-removebg-preview.png";
+import gif from "../images/fa_a_o_personagem_andar_20250611_141842_0_v3.gif";
 
 export function Sharecontent() {
   const { sharelink } = useParams();
@@ -32,7 +33,13 @@ export function Sharecontent() {
     return match ? match[1] : null;
   }
 
-  if (loading) return <p className="min-h-screen text-bold text-3xl flex items-center justify-center` text-white">Loading ...</p>;
+  if (loading) return (
+  
+  <div className="min-h-screen text-bold text-3xl flex flex-col items-center justify-center">
+    <img className="w-[100px]" src={gif} alt="" />
+    <p className="text-white">Loading ...</p>
+  </div>
+  );
 
   return (
   <div className="min-h-screen bg-black text-white px-6 py-10">

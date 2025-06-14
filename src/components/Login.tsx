@@ -9,15 +9,18 @@ import toast, { Toaster } from 'react-hot-toast';
 export function Login(){
     const userRef=useRef<HTMLInputElement>(null);
     const Password=useRef<HTMLInputElement>(null);
-    
+  
+    const navigate=useNavigate();
     
 
     async function login(){
 
         try{
-
-            const emailId=userRef.current?.value;
+              const emailId=userRef.current?.value;
         const password=Password.current?.value;
+           
+
+          
 
 
       const response= await axios.post(BACKEND_URL+"/api/v1/login",{
@@ -28,7 +31,8 @@ export function Login(){
 
         const jwt=response.data.token;
         localStorage.setItem("token",jwt);
-
+        
+        
         toast.success("Login Sucess");
         navigate("/dashboard");
 
@@ -41,11 +45,14 @@ export function Login(){
             toast.error(errorMessage); 
 
         }
+        
      
 
         
     }
-    const navigate=useNavigate();
+
+  
+    
     return (
         <div>
             <Toaster/>

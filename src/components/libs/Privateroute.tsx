@@ -4,7 +4,7 @@ import type {JSX, ReactNode}  from "react";
   interface Privateprop{
     children:ReactNode;
   }
-export async function Privateroute({children}:Privateprop):Promise<JSX.Element>{
+export  function Privateroute({children}:Privateprop):JSX.Element{
 
 
     const token=localStorage.getItem("token");

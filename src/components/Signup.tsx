@@ -46,12 +46,10 @@ export function Signup(){
                    toast.error(errorMessage);
             }
 
-        }
-
-
-       
+        } 
+  
     }
-       
+    
     
     return (
         <div>

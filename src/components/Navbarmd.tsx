@@ -9,6 +9,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../config/config";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import gif from "../images/fa_a_o_personagem_andar_20250611_141842_0_v3.gif";
 
 export function Navbar(){
   const navigate=useNavigate();
@@ -42,6 +43,26 @@ export function Navbar(){
 
 
     }
+
+     async function Sharecontent(){
+     
+           const response=await axios.post(`${BACKEND_URL}/api/v1/brain/share`,{
+              share:true
+           },{
+             headers:{
+               "Authorization":localStorage.getItem("token")
+             } 
+     
+     
+             
+           })
+     
+           const shareUrl=`http://localhost:5173/api/v1/brain/${response.data.hash}`;
+           navigator.clipboard.writeText(shareUrl);
+           alert(shareUrl);
+     
+     
+         }
 
 
       useEffect(()=>{
@@ -84,9 +105,9 @@ export function Navbar(){
             
           </a>
         </li>
-        <li ><a className="justify-between">Share
+        <li ><button onClick={Sharecontent} className="justify-between">Share
           <span className="bg-green-400 text-white text-[10px] rounded-xl px-1 py-1">New</span>
-          </a> </li>
+          </button> </li>
         <li><button onClick={logout}>Logout</button></li>
       </ul>
     </div>
@@ -107,7 +128,10 @@ export function Navbar(){
             time={new Date(content.createdAt).toLocaleDateString("en-GB")}
           />
         ))}
-            </div>) : (<div className="text-white">Hlleo ji</div>)}
+            </div>) : (<div className="min-h-screen text-bold text-3xl flex flex-col items-center justify-center">
+    <img className="w-[100px]" src={gif} alt="" />
+    <p className="text-white">Add your Brain</p>
+  </div>)}
 </div>
             {/* Footer  */}
             <div className=" pt-11">

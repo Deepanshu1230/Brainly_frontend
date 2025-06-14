@@ -15,6 +15,7 @@ enum ContentType {
 export function OpenModal({open,Onclose}){
    const titleref=useRef<HTMLInputElement>(null);
    const linkref=useRef<HTMLInputElement>(null);
+   
 
    const [type,setType]=useState(ContentType.Youtube);
 
@@ -22,6 +23,8 @@ export function OpenModal({open,Onclose}){
     // const [modelopen,setmodelopen]=useState(false);
 
    async function addContent(){
+
+    try{
       const title=titleref.current?.value;
       const link=linkref.current?.value;
 
@@ -42,10 +45,19 @@ export function OpenModal({open,Onclose}){
       toast.success("Added");
 
 
-
-
+    }
+    catch(err){
+      console.log(String(err));
 
     }
+    
+      }
+
+
+
+   
+
+
   return (
     
 
