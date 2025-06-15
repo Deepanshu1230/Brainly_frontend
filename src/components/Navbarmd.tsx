@@ -57,7 +57,7 @@ export function Navbar(){
              
            })
      
-           const shareUrl=`http://localhost:5173/api/v1/brain/${response.data.hash}`;
+           const shareUrl=`${window.location.origin}/${response.data.hash}`;
            navigator.clipboard.writeText(shareUrl);
            alert(shareUrl);
      
