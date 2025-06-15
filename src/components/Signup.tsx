@@ -100,10 +100,10 @@ export function Signup(){
                 </div>
 
                 {/* Note  */}
-                {/* <div className="text-center pt-5">
-                    <p>New User? <span className="font-bold cursor-pointer">Signup</span>
+                <div className="text-center pt-5">
+                    <p>Already Signup? <span onClick={() => navigate("/login")} className="font-bold cursor-pointer hover:text-blue-400 duration-200 transition-all" >Login</span>
                     </p>
-                </div> */}
+                </div>
             </div>
         </div>
         </div>
