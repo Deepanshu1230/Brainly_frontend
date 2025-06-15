@@ -23,7 +23,7 @@ function App() {
             <Privateroute>
              <Dashboard/>
             </Privateroute>}/>
-            <Route path="/api/v1/brain/:sharelink" element={<Sharecontent/>}/>
+            <Route path="/share/:sharelink" element={<Sharecontent/>}/>
           
         </Routes>
         </BrowserRouter>
