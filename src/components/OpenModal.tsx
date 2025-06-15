@@ -12,7 +12,12 @@ enum ContentType {
     Youtube="youtube"
 
 }
-export function OpenModal({open,Onclose}){
+
+interface OpenModalProps {
+  open: boolean;
+  Onclose: () => void;
+}
+export function OpenModal({open,Onclose}:OpenModalProps){
    const titleref=useRef<HTMLInputElement>(null);
    const linkref=useRef<HTMLInputElement>(null);
    
