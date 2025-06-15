@@ -24,8 +24,9 @@ function App() {
              <Dashboard/>
             </Privateroute>}/>
             <Route path="/share/:sharelink" element={<Sharecontent/>}/>
-          
+            
         </Routes>
+        
         </BrowserRouter>
    
       

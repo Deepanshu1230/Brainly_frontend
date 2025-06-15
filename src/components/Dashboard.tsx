@@ -31,7 +31,7 @@ export function Dashboard(){
         
       })
 
-      const shareUrl=`${BACKEND_URL}/share/${response.data.hash}`;
+      const shareUrl=`${window.location.origin}/share/${response.data.hash}`;
       navigator.clipboard.writeText(shareUrl);
       alert(shareUrl);
 
