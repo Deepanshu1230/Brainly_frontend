@@ -31,7 +31,7 @@ export function Dashboard(){
         
       })
 
-      const shareUrl=`http://localhost:5173/api/v1/brain/${response.data.hash}`;
+      const shareUrl=`${BACKEND_URL}/api/v1/brain/${response.data.hash}`;
       navigator.clipboard.writeText(shareUrl);
       alert(shareUrl);
 
